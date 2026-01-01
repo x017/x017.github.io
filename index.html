@@ -25,7 +25,6 @@
     }
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
     body {
       background-color: #111111;
@@ -39,7 +38,6 @@
       mask-image: radial-gradient(circle at center, black 50%, transparent 100%); 
       -webkit-mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
     }
-
     .tech-tag {
       font-size: 0.8rem;
       padding: 2px 8px;
@@ -49,31 +47,55 @@
       color: #a0a0a0;
       transition: all 0.2s;
     }
-
     .tech-tag:hover {
       border-color: #555;
       color: #fff;
     }
-
-    /* Glow & Pulse Animation */
-    @keyframes pulse-glow {
-      0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
-      70% { box-shadow: 0 0 0 8px rgba(56, 189, 248, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+    /* Glow Animation */
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 15px 2px rgba(56, 189, 248, 0.6); }
+      50% { box-shadow: 0 0 25px 4px rgba(56, 189, 248, 0.9); }
     }
-
     .glow-indicator {
       box-shadow: 0 0 15px 2px rgba(56, 189, 248, 0.6);
-      animation: pulse-glow 2s infinite;
+      animation: glow 3s ease-in-out infinite;
+      will-change: box-shadow;
     }
-
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: #111; }
     ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+
+    /* Tab Styles */
+    .tab-btn {
+      position: relative;
+      padding: 0.5rem 1rem;
+      color: #888;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover {
+      color: #ccc;
+    }
+    .tab-btn.active {
+      color: #38bdf8;
+    }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #38bdf8;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
   </style>
 </head>
 <body class="min-h-screen relative font-sans">
-
   <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
     <div class="absolute inset-0 bg-[#111111]"></div>
     <div class="absolute inset-0 bg-grid opacity-80"></div>
@@ -81,9 +103,10 @@
     <div class="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[120px] opacity-40"></div>
   </div>
 
-  <main class="relative z-10 max-w-3xl mx-auto space-y-20 py-12 px-6 md:px-12 lg:py-20">
-
-    <header class="space-y-6">
+  <main class="relative z-10 max-w-3xl mx-auto py-12 px-6 md:px-12 lg:py-20">
+    
+    <!-- Header (Always Visible) -->
+    <header class="space-y-6 mb-12">
       <div class="flex flex-col md:flex-row md:items-start gap-8">
         <div class="w-24 h-24 rounded-full border border-zinc-800 bg-zinc-900 overflow-hidden relative z-20">
             <img src="file:///home/parsa/prsa.jpg" alt="Parsa" class="w-full h-full object-cover">
@@ -105,7 +128,6 @@
             <span class="tech-tag">Redis</span>
             <span class="tech-tag">Rabbitmq</span>
           </div>
-
           <div class="flex gap-5 text-muted pt-1 text-sm font-mono">
             <a href="https://github.com/x017" class="hover:text-white transition"><i class="fab fa-github mr-1"></i> Github</a>
             <a href="https://www.linkedin.com/in/parsa-mohammadian-b45b86333/" class="hover:text-white transition"><i class="fab fa-linkedin mr-1"></i> LinkedIn</a>
@@ -115,102 +137,250 @@
       </div>
     </header>
 
-    <section id="experience">
-      <h2 class="text-xl font-bold text-white mb-10 border-b border-zinc-800 pb-2 flex justify-between items-end">
-        Professional Experience
-        <span class="text-xs font-mono text-zinc-600 font-normal">SEC_EXP_v2.5</span>
-      </h2>
-      
-      <div class="relative border-l border-zinc-800 ml-3 space-y-12">
-        
-        <div class="relative pl-8">
-          <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent glow-indicator"></div>
+    <!-- Tab Navigation -->
+    <nav class="border-b border-zinc-800 mb-12">
+      <div class="flex gap-1 font-mono text-sm">
+        <button class="tab-btn active" data-tab="home">
+          <i class="fas fa-home mr-2"></i>Home
+        </button>
+        <button class="tab-btn" data-tab="test">
+          <i class="fas fa-flask mr-2"></i>Personal Projects
+        </button>
+        <!-- Add more tabs here -->
+        <!-- <button class="tab-btn" data-tab="blog">
+          <i class="fas fa-pen mr-2"></i>Blog
+        </button> -->
+      </div>
+    </nav>
+
+    <!-- Tab Contents -->
+    <div class="tab-contents">
+
+      <!-- HOME TAB -->
+      <div class="tab-content active" id="tab-home">
+        <div class="space-y-20">
           
-          <div class="space-y-3">
-            <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1">
-              <h3 class="text-lg font-bold text-white">Junior Backend Engineer</h3>
-              <span class="text-xs font-mono text-muted">March 2025 — Present</span>
-            </div>
-            <p class="text-sm font-medium text-accent/80">Sinoos Group <span class="text-zinc-700 mx-2">|</span> Full-time</p>
-            <ul class="space-y-4 pt-2">
-              <li class="group">
-                <span class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">SMS Routing Microservice</span>
-                <p class="text-sm text-zinc-500 leading-relaxed">Re-architected a Celery-based asynchronous microservice enabling scalable, high-performance multi-provider SMS delivery.</p>
-              </li>
-
-              <li class="group">
-                <span class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">Internal Finance System</span>
-                <p class="text-sm text-zinc-500 leading-relaxed">Designed and implemented the system end-to-end, including financial data models, invoice workflows, and secure integration with Iran’s Moadian government tax platform.</p>
-              </li>
-              <li class="group">
-                <span class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">Personalized NFC Card SaaS</span>
-                <p class="text-sm text-zinc-500 leading-relaxed">Built a multi-tenant SaaS product allowing customers to manage NFC-linked profiles and publish personalized public pages.</p>
-              </li>
-
-            </ul>
-          </div>
-        </div>
-
-        <div class="relative pl-8">
-          <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
-          
-          <div class="space-y-3">
-            <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1">
-              <h3 class="text-lg font-bold text-zinc-300">Backend Engineering Intern</h3>
-              <span class="text-xs font-mono text-muted">Dec 2024 - March 2025</span>
-            </div>
-            <p class="text-sm font-medium text-zinc-500">Sinoos Group<span class="text-zinc-700 mx-2">|</span> Internship</p>
+          <section id="experience">
+            <h2 class="text-xl font-bold text-white mb-10 border-b border-zinc-800 pb-2 flex justify-between items-end">
+              Professional Experience
+              <span class="text-xs font-mono text-zinc-600 font-normal">SEC_EXP_v2.5</span>
+            </h2>
             
-            <ul class="space-y-4 pt-2">
-            <li>
-                <span class="text-zinc-400 text-sm font-semibold block">Divar-like Marketplace API</span>
-                <p class="text-sm text-zinc-500 leading-relaxed">Built a REST API clone using Django REST Framework with asynchronous background processing via Celery and Redis.</p>
-              </li>
-              <li>
-                <span class="text-zinc-400 text-sm font-semibold block">Webinar Ticketing System</span>
-                <p class="text-sm text-zinc-500 leading-relaxed">Implemented webinar registration and ticket sales with integrated payment gateway provider APIs.</p>
-              </li>
-              <li>
-                <span class="text-zinc-400 text-sm font-semibold block">Customer Document Microservice</span>
-                <p class="text-sm text-zinc-500 leading-relaxed">Maintained and extended the tiktime-customer-document microservice, delivering feature updates and production fixes.</p>
-              </li>
+            <div class="relative border-l border-zinc-800 ml-3 space-y-12">
+              
+              <div class="relative pl-8">
+                <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent glow-indicator"></div>
+                
+                <div class="space-y-3">
+                  <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1">
+                    <h3 class="text-lg font-bold text-white">Junior Backend Engineer</h3>
+                    <span class="text-xs font-mono text-muted">March 2025 — Present</span>
+                  </div>
+                  <p class="text-sm font-medium text-accent/80">Sinoos Group <span class="text-zinc-700 mx-2">|</span> Full-time</p>
+                  <ul class="space-y-4 pt-2">
+                    <li class="group">
+                      <span class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">SMS Routing Microservice</span>
+                      <p class="text-sm text-zinc-500 leading-relaxed">Re-architected a Celery-based asynchronous microservice enabling scalable, high-performance multi-provider SMS delivery.</p>
+                    </li>
+                    <li class="group">
+                      <span class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">Internal Finance System</span>
+                      <p class="text-sm text-zinc-500 leading-relaxed">Designed and implemented the system end-to-end, including financial data models, invoice workflows, and secure integration with Iran's Moadian government tax platform.</p>
+                    </li>
+                    <li class="group">
+                      <span class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">Personalized NFC Card SaaS</span>
+                      <p class="text-sm text-zinc-500 leading-relaxed">Built a multi-tenant SaaS product allowing customers to manage NFC-linked profiles and publish personalized public pages.</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
 
-            </ul>
-          </div>
+              <div class="relative pl-8">
+                <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+                
+                <div class="space-y-3">
+                  <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1">
+                    <h3 class="text-lg font-bold text-zinc-300">Backend Engineering Intern</h3>
+                    <span class="text-xs font-mono text-muted">Dec 2024 - March 2025</span>
+                  </div>
+                  <p class="text-sm font-medium text-zinc-500">Sinoos Group<span class="text-zinc-700 mx-2">|</span> Internship</p>
+                  
+                  <ul class="space-y-4 pt-2">
+                    <li>
+                      <span class="text-zinc-400 text-sm font-semibold block">Divar-like Marketplace API</span>
+                      <p class="text-sm text-zinc-500 leading-relaxed">Built a REST API clone using Django REST Framework with asynchronous background processing via Celery and Redis.</p>
+                    </li>
+                    <li>
+                      <span class="text-zinc-400 text-sm font-semibold block">Webinar Ticketing System</span>
+                      <p class="text-sm text-zinc-500 leading-relaxed">Implemented webinar registration and ticket sales with integrated payment gateway provider APIs.</p>
+                    </li>
+                    <li>
+                      <span class="text-zinc-400 text-sm font-semibold block">Customer Document Microservice</span>
+                      <p class="text-sm text-zinc-500 leading-relaxed">Maintained and extended the tiktime-customer-document microservice, delivering feature updates and production fixes.</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          <section id="github">
+            <h2 class="text-xl font-bold text-white mb-10 border-b border-zinc-800 pb-2 flex justify-between items-end">
+              GitHub Activity
+              <span class="text-xs font-mono text-zinc-600 font-normal">REPO_v1.0</span>
+            </h2>
+
+
+            <!-- GitHub Contribution Graph -->
+            <div class="border border-zinc-800 bg-zinc-900/30 rounded-lg p-6 overflow-hidden">
+              <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <i class="fab fa-github text-zinc-600"></i>
+                Contribution Activity
+              </h3>
+              <div class="flex justify-center">
+                <img src="https://github-readme-activity-graph.vercel.app/graph?username=x017&bg_color=111111&color=666666&line=38bdf8&point=38bdf8&area=true&area_color=38bdf8&hide_border=true" alt="GitHub Activity Graph" class="w-full rounded" />
+              </div>
+            </div>
+
+            <!-- GitHub Repositories -->
+          
+          <section id="education">
+            <h2 class="text-xl font-bold text-white mb-8 border-b border-zinc-800 pb-2">Education</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div class="text-sm font-mono text-muted pt-1">2023 - Present</div>
+              <div class="md:col-span-3">
+                <h3 class="font-semibold text-white">Bachelor's in Computer Science</h3>
+                <p class="text-sm text-zinc-400 mt-1">IAU Ahvaz Branch</p>
+                <p class="text-sm text-zinc-500 mt-2">Software Engineering</p>
+              </div>
+            </div>
+          </section>
+
         </div>
-
       </div>
-    </section>
 
-    <!-- <section id="highlights"> -->
-    <!--   <h2 class="text-xl font-bold text-white mb-8 border-b border-zinc-800 pb-2">Architecture Highlights</h2> -->
-    <!--   <div class="space-y-6"> -->
-    <!--     <div class="group border border-zinc-900 bg-zinc-900/50 hover:bg-zinc-900/80 rounded p-4 transition duration-200"> -->
-    <!--       <div class="flex flex-col sm:flex-row gap-3 sm:items-center mb-2"> -->
-    <!--         <span class="text-xs font-mono text-blue-400 bg-blue-400/10 px-2 py-1 rounded">High Traffic</span> -->
-    <!--         <span class="text-sm font-semibold text-zinc-300">API Gateway Optimization</span> -->
-    <!--       </div> -->
-    <!--       <p class="text-sm text-zinc-400">Reduced server load by 40% via rate limiting and caching.</p> -->
-    <!--     </div> -->
-    <!--   </div> -->
-    <!-- </section> -->
-    
-    <section id="education">
-      <h2 class="text-xl font-bold text-white mb-8 border-b border-zinc-800 pb-2">Education</h2>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="text-sm font-mono text-muted pt-1">2023 - Present</div>
-        <div class="md:col-span-3">
-          <h3 class="font-semibold text-white">Bachelor's in Computer Science</h3>
-          <p class="text-sm text-zinc-400 mt-1">IAU Ahvaz Branch</p>
-          <p class="text-sm text-zinc-500 mt-2">Software Engineering</p>
+      <!-- TEST TAB -->
+      <div class="tab-content" id="tab-test">
+        <div class="space-y-8">
+          <!-- <h2 class="text-xl font-bold text-white mb-6 border-b border-zinc-800 pb-2"> -->
+          <!--   Test Page -->
+          <!-- </h2> -->
+          <!---->
+          <!-- <div class="border border-zinc-800 bg-zinc-900/30 rounded-lg p-6"> -->
+          <!--   <p class="text-zinc-400">This is the test tab. Add your content here!</p> -->
+          <!-- </div> -->
+          <!---->
+          <!--Example content structure --> 
+          <!-- <div class="border border-dashed border-zinc-700 rounded-lg p-8 text-center"> -->
+          <!--   <i class="fas fa-plus text-zinc-600 text-2xl mb-3"></i> -->
+          <!--   <p class="text-zinc-500 text-sm">Add your content here</p> -->
+          <!-- </div> -->
+
+            <div class="mt-8 space-y-4" id="github-repos">
+              <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <i class="fab fa-github text-zinc-600"></i>
+                Selected Repositories
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="repos-container">
+                <div class="text-center text-zinc-500 py-8 col-span-full">
+                  <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+                  <p>Loading repositories...</p>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
-    </section>
 
-    <footer class="pt-12 text-center pb-8 border-t border-zinc-900">
+      <!-- ADD MORE TABS HERE -->
+      <!-- 
+      <div class="tab-content" id="tab-blog">
+        <h2>Blog</h2>
+        <p>Your blog content...</p>
+      </div>
+      -->
+
+    </div>
+
+    <footer class="pt-12 text-center pb-8 border-t border-zinc-900 mt-20">
       <p class="text-xs font-mono text-zinc-600">© 2025 Parsa. Built with Django & Tailwind CSS.</p>
     </footer>
-
   </main>
+
+  <script>
+    // Tab Switching Logic
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.dataset.tab;
+
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to clicked button and corresponding content
+        button.classList.add('active');
+        document.getElementById(`tab-${tabId}`).classList.add('active');
+      });
+    });
+
+    // GitHub Repositories
+    const selectedRepos = [
+      'x017/tsuki',
+      'x017/moadian-full',
+      'x017/kickstart.nvim',
+      'x017/furusato.nvim',
+    ];
+
+    async function fetchGitHubRepos() {
+      try {
+        const container = document.getElementById('repos-container');
+        container.innerHTML = '';
+        
+        for (const repoPath of selectedRepos) {
+          const response = await fetch(`https://api.github.com/repos/${repoPath}`);
+          const repo = await response.json();
+          
+          const repoCard = `
+            <div class="group border border-zinc-800 bg-zinc-900/30 rounded-lg p-4 hover:border-zinc-700 hover:bg-zinc-900/50 transition-all duration-300">
+              <div class="flex items-start justify-between mb-2">
+                <i class="fas fa-folder-open text-zinc-600 text-xl"></i>
+                <div class="flex items-center gap-3">
+                  ${repo.stargazers_count > 0 ? `
+                    <span class="text-xs text-zinc-600 flex items-center gap-1">
+                      <i class="fas fa-star text-zinc-600"></i>
+                      <span>${repo.stargazers_count}</span>
+                    </span>
+                  ` : ''}
+                  <a href="${repo.html_url}" target="_blank" class="text-zinc-600 hover:text-zinc-400 transition">
+                    <i class="fab fa-github text-lg"></i>
+                  </a>
+                </div>
+              </div>
+              <h3 class="text-base font-semibold text-white mb-2 group-hover:text-zinc-300 transition-colors">${repo.name}</h3>
+              <p class="text-xs text-zinc-500 leading-relaxed mb-3 line-clamp-2">${repo.description || 'No description available'}</p>
+              <div class="flex flex-wrap gap-1.5">
+                ${repo.language ? `<span class="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-500 rounded font-mono">${repo.language}</span>` : ''}
+                ${repo.topics ? repo.topics.slice(0, 2).map(topic => 
+                  `<span class="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-500 rounded font-mono">${topic}</span>`
+                ).join('') : ''}
+              </div>
+            </div>
+          `;
+          container.innerHTML += repoCard;
+        }
+      } catch (error) {
+        document.getElementById('repos-container').innerHTML = `
+          <div class="text-center text-zinc-600 py-8 col-span-full">
+            <i class="fas fa-exclamation-circle text-2xl mb-2"></i>
+            <p>Unable to load repositories</p>
+          </div>
+        `;
+      }
+    }
+
+    fetchGitHubRepos();
+  </script>
 </body>
 </html>
