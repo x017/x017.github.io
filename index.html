@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parsa - Backend Engineer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+          },
+          colors: {
+            bg: '#111111',
+            card: '#FFFFFF', 
+            border: '#282828',
+            muted: '#888888',
+            accent: '#38bdf8', 
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      background-color: #111111;
+      color: #eaeaea;
+    }
+    
+    .bg-grid {
+      background-size: 50px 50px;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      mask-image: radial-gradient(circle at center, black 50%, transparent 100%); 
+      -webkit-mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
+    }
+
+    .tech-tag {
+      font-size: 0.8rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background-color: #1a1a1a;
+      border: 1px solid #333;
+      color: #a0a0a0;
+      transition: all 0.2s;
+    }
+
+    .tech-tag:hover {
+      border-color: #555;
+      color: #fff;
+    }
+
+    /* Glow & Pulse Animation */
+    @keyframes pulse-glow {
+      0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(56, 189, 248, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+    }
+
+    .glow-indicator {
+      box-shadow: 0 0 15px 2px rgba(56, 189, 248, 0.6);
+      animation: pulse-glow 2s infinite;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #111; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+  </style>
+</head>
+<body class="min-h-screen relative font-sans">
+
+  <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+    <div class="absolute inset-0 bg-[#111111]"></div>
+    <div class="absolute inset-0 bg-grid opacity-80"></div>
+    <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px] opacity-40"></div>
+    <div class="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[120px] opacity-40"></div>
+  </div>
+
+  <main class="relative z-10 max-w-3xl mx-auto space-y-20 py-12 px-6 md:px-12 lg:py-20">
+
+    <header class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-start gap-8">
+        <div class="w-24 h-24 rounded-full border border-zinc-800 bg-zinc-900 overflow-hidden relative z-20">
+            <img src="file:///home/parsa/prsa.jpg" alt="Parsa" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="space-y-4">
+          <div>
+            <h1 class="text-3xl font-bold text-white tracking-tight">Parsa</h1>
+            <p class="text-muted text-lg mt-1">Backend Developer & Systems Architect</p>
+          </div>
+          
+          <div class="flex flex-wrap gap-2 font-mono">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">DRF</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">Linux</span>
+            <span class="tech-tag">Celery</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">Rabbitmq</span>
+          </div>
+
+          <div class="flex gap-5 text-muted pt-1 text-sm font-mono">
+            <a href="https://github.com/x017" class="hover:text-white transition"><i class="fab fa-github mr-1"></i> Github</a>
+            <a href="https://www.linkedin.com/in/parsa-mohammadian-b45b86333/" class="hover:text-white transition"><i class="fab fa-linkedin mr-1"></i> LinkedIn</a>
+            <a href="mailto:parsam280xyz@gmail.com" class="hover:text-white transition"><i class="fas fa-envelope mr-1"></i> Email</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="experience">
+      <h2 class="text-xl font-bold text-white mb-10 border-b border-zinc-800 pb-2 flex justify-between items-end">
+        Professional Experience
+        <span class="text-xs font-mono text-zinc-600 font-normal">SEC_EXP_v2.5</span>
+      </h2>
+      
+      <div class="relative border-l border-zinc-800 ml-3 space-y-12">
+        
+        <div class="relative pl-8">
+          <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent glow-indicator"></div>
+          
+          <div class="space-y-3">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1">
+              <h3 class="text-lg font-bold text-white">Junior Backend Engineer</h3>
+              <span class="text-xs font-mono text-muted">March 2025 — Present</span>
+            </div>
+            <p class="text-sm font-medium text-accent/80">Sinoos Group <span class="text-zinc-700 mx-2">|</span> Full-time</p>
+            <ul class="space-y-4 pt-2">
+              <li class="group">
+                <span class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">SMS Routing Microservice</span>
+                <p class="text-sm text-zinc-500 leading-relaxed">Re-architected a Celery-based asynchronous microservice enabling scalable, high-performance multi-provider SMS delivery.</p>
+              </li>
+
+              <li class="group">
+                <span class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">Internal Finance System</span>
+                <p class="text-sm text-zinc-500 leading-relaxed">Designed and implemented the system end-to-end, including financial data models, invoice workflows, and secure integration with Iran’s Moadian government tax platform.</p>
+              </li>
+              <li class="group">
+                <span class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">Personalized NFC Card SaaS</span>
+                <p class="text-sm text-zinc-500 leading-relaxed">Built a multi-tenant SaaS product allowing customers to manage NFC-linked profiles and publish personalized public pages.</p>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+        <div class="relative pl-8">
+          <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+          
+          <div class="space-y-3">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1">
+              <h3 class="text-lg font-bold text-zinc-300">Backend Engineering Intern</h3>
+              <span class="text-xs font-mono text-muted">Dec 2024 - March 2025</span>
+            </div>
+            <p class="text-sm font-medium text-zinc-500">Sinoos Group<span class="text-zinc-700 mx-2">|</span> Internship</p>
+            
+            <ul class="space-y-4 pt-2">
+            <li>
+                <span class="text-zinc-400 text-sm font-semibold block">Divar-like Marketplace API</span>
+                <p class="text-sm text-zinc-500 leading-relaxed">Built a REST API clone using Django REST Framework with asynchronous background processing via Celery and Redis.</p>
+              </li>
+              <li>
+                <span class="text-zinc-400 text-sm font-semibold block">Webinar Ticketing System</span>
+                <p class="text-sm text-zinc-500 leading-relaxed">Implemented webinar registration and ticket sales with integrated payment gateway provider APIs.</p>
+              </li>
+              <li>
+                <span class="text-zinc-400 text-sm font-semibold block">Customer Document Microservice</span>
+                <p class="text-sm text-zinc-500 leading-relaxed">Maintained and extended the tiktime-customer-document microservice, delivering feature updates and production fixes.</p>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- <section id="highlights"> -->
+    <!--   <h2 class="text-xl font-bold text-white mb-8 border-b border-zinc-800 pb-2">Architecture Highlights</h2> -->
+    <!--   <div class="space-y-6"> -->
+    <!--     <div class="group border border-zinc-900 bg-zinc-900/50 hover:bg-zinc-900/80 rounded p-4 transition duration-200"> -->
+    <!--       <div class="flex flex-col sm:flex-row gap-3 sm:items-center mb-2"> -->
+    <!--         <span class="text-xs font-mono text-blue-400 bg-blue-400/10 px-2 py-1 rounded">High Traffic</span> -->
+    <!--         <span class="text-sm font-semibold text-zinc-300">API Gateway Optimization</span> -->
+    <!--       </div> -->
+    <!--       <p class="text-sm text-zinc-400">Reduced server load by 40% via rate limiting and caching.</p> -->
+    <!--     </div> -->
+    <!--   </div> -->
+    <!-- </section> -->
+    
+    <section id="education">
+      <h2 class="text-xl font-bold text-white mb-8 border-b border-zinc-800 pb-2">Education</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="text-sm font-mono text-muted pt-1">2023 - Present</div>
+        <div class="md:col-span-3">
+          <h3 class="font-semibold text-white">Bachelor's in Computer Science</h3>
+          <p class="text-sm text-zinc-400 mt-1">IAU Ahvaz Branch</p>
+          <p class="text-sm text-zinc-500 mt-2">Software Engineering</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pt-12 text-center pb-8 border-t border-zinc-900">
+      <p class="text-xs font-mono text-zinc-600">© 2025 Parsa. Built with Django & Tailwind CSS.</p>
+    </footer>
+
+  </main>
+</body>
+</html>
