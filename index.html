@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="antialiased scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,10 +16,10 @@
           },
           colors: {
             bg: '#111111',
-            card: '#FFFFFF', 
+            card: '#FFFFFF',
             border: '#282828',
             muted: '#888888',
-            accent: '#38bdf8', 
+            accent: '#38bdf8',
           }
         }
       }
@@ -30,14 +31,15 @@
       background-color: #111111;
       color: #eaeaea;
     }
-    
+
     .bg-grid {
       background-size: 50px 50px;
       background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      mask-image: radial-gradient(circle at center, black 50%, transparent 100%); 
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
       -webkit-mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
     }
+
     .tech-tag {
       font-size: 0.8rem;
       padding: 2px 8px;
@@ -47,23 +49,43 @@
       color: #a0a0a0;
       transition: all 0.2s;
     }
+
     .tech-tag:hover {
       border-color: #555;
       color: #fff;
     }
+
     /* Glow Animation */
     @keyframes glow {
-      0%, 100% { box-shadow: 0 0 15px 2px rgba(56, 189, 248, 0.6); }
-      50% { box-shadow: 0 0 25px 4px rgba(56, 189, 248, 0.9); }
+
+      0%,
+      100% {
+        box-shadow: 0 0 15px 2px rgba(56, 189, 248, 0.6);
+      }
+
+      50% {
+        box-shadow: 0 0 30px 4px rgba(56, 189, 248, 0.9);
+      }
     }
+
     .glow-indicator {
       box-shadow: 0 0 15px 2px rgba(56, 189, 248, 0.6);
       animation: glow 3s ease-in-out infinite;
       will-change: box-shadow;
     }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #111; }
-    ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #111;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 10px;
+    }
 
     /* Tab Styles */
     .tab-btn {
@@ -72,12 +94,15 @@
       color: #888;
       transition: all 0.2s;
     }
+
     .tab-btn:hover {
       color: #ccc;
     }
+
     .tab-btn.active {
       color: #38bdf8;
     }
+
     .tab-btn.active::after {
       content: '';
       position: absolute;
@@ -87,88 +112,104 @@
       height: 2px;
       background: #38bdf8;
     }
+
     .tab-content {
       display: none;
     }
+
     .tab-content.active {
       display: block;
     }
+
     /* Tab Styles */
-        .tab-btn {
-          position: relative;
-          padding: 0.5rem 1rem;
-          color: #888;
-          transition: all 0.2s;
-        }
-        .tab-btn:hover {
-          color: #ccc;
-        }
-        .tab-btn.active {
-          color: #38bdf8;
-        }
-        .tab-btn.active::after {
-          content: '';
-          position: absolute;
-          bottom: -1px;
-          left: 0;
-          right: 0;
-          height: 2px;
-          background: #38bdf8;
-        }
-        
-        /* Tab Content Animation */
-        .tab-contents {
-          position: relative;
-        }
-        .tab-content {
-          display: none;
-          opacity: 0;
-          transform: translateY(10px);
-          transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .tab-content.active {
-          display: block;
-          animation: fadeInUp 0.4s ease forwards;
-        }
-        
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
+    .tab-btn {
+      position: relative;
+      padding: 0.5rem 1rem;
+      color: #888;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      color: #ccc;
+    }
+
+    .tab-btn.active {
+      color: #38bdf8;
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #38bdf8;
+    }
+
+    /* Tab Content Animation */
+    .tab-contents {
+      position: relative;
+    }
+
+    .tab-content {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeInUp 0.4s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
+
 <body class="min-h-screen relative font-sans">
   <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
     <div class="absolute inset-0 bg-[#111111]"></div>
     <div class="absolute inset-0 bg-grid opacity-80"></div>
-    <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px] opacity-40"></div>
-    <div class="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[120px] opacity-40"></div>
+    <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px] opacity-40">
+    </div>
+    <div
+      class="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[120px] opacity-40">
+    </div>
   </div>
 
   <main class="relative z-10 max-w-3xl mx-auto py-12 px-6 md:px-12 lg:py-20">
-    
+
     <!-- Header (Always Visible) -->
     <header class="space-y-6 mb-12">
       <div class="flex flex-col md:flex-row md:items-start gap-8">
-        <div class="w-24 h-24 rounded-full border border-zinc-800 bg-zinc-900 overflow-hidden relative z-20">
+        <div
+          class="w-24 h-24 rounded-full border border-zinc-800 bg-zinc-900 overflow-hidden relative z-20 flex-shrink-0">
+
+          <img src="./Code.jpg" alt="" class="w-full h-full object-cover object-top rounded-full">
         </div>
-        
+
         <div class="space-y-4">
           <div>
             <h1 class="text-3xl font-bold text-white tracking-tight">Parsa</h1>
             <p class="text-muted text-lg mt-1">Backend Developer & Systems Architect</p>
           </div>
-          
+
           <div class="flex flex-wrap gap-2 font-mono">
             <span class="tech-tag">Python</span>
             <span class="tech-tag">Django</span>
-            <span class="tech-tag">DRF</span>
+            <span class="tech-tag">Django Rest Framework</span>
             <span class="tech-tag">Docker</span>
             <span class="tech-tag">Linux</span>
             <span class="tech-tag">Celery</span>
@@ -176,9 +217,12 @@
             <span class="tech-tag">Rabbitmq</span>
           </div>
           <div class="flex gap-5 text-muted pt-1 text-sm font-mono">
-            <a href="https://github.com/x017" class="hover:text-white transition"><i class="fab fa-github mr-1"></i> Github</a>
-            <a href="https://www.linkedin.com/in/parsa-mohammadian-b45b86333/" class="hover:text-white transition"><i class="fab fa-linkedin mr-1"></i> LinkedIn</a>
-            <a href="mailto:parsam280xyz@gmail.com" class="hover:text-white transition"><i class="fas fa-envelope mr-1"></i> Email</a>
+            <a href="https://github.com/x017" class="hover:text-white transition"><i class="fab fa-github mr-1"></i>
+              Github</a>
+            <a href="https://www.linkedin.com/in/parsa-mohammadian-b45b86333/" class="hover:text-white transition"><i
+                class="fab fa-linkedin mr-1"></i> LinkedIn</a>
+            <a href="mailto:parsam280xyz@gmail.com" class="hover:text-white transition"><i
+                class="fas fa-envelope mr-1"></i> Email</a>
           </div>
         </div>
       </div>
@@ -206,36 +250,47 @@
       <!-- HOME TAB -->
       <div class="tab-content active" id="tab-home">
         <div class="space-y-20">
-          
+
           <section id="experience">
             <h2 class="text-xl font-bold text-white mb-10 border-b border-zinc-800 pb-2 flex justify-between items-end">
               Professional Experience
               <span class="text-xs font-mono text-zinc-600 font-normal">SEC_EXP_v2.5</span>
             </h2>
-            
+
             <div class="relative border-l border-zinc-800 ml-3 space-y-12">
-              
+
               <div class="relative pl-8">
                 <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent glow-indicator"></div>
-                
+
                 <div class="space-y-3">
                   <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1">
                     <h3 class="text-lg font-bold text-white">Junior Backend Engineer</h3>
                     <span class="text-xs font-mono text-muted">March 2025 — Present</span>
                   </div>
-                  <p class="text-sm font-medium text-accent/80">Sinoos Group <span class="text-zinc-700 mx-2">|</span> Full-time</p>
+                  <p class="text-sm font-medium text-accent/80">Sinoos Group <span class="text-zinc-700 mx-2">|</span>
+                    Full-time</p>
                   <ul class="space-y-4 pt-2">
                     <li class="group">
-                      <span class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">SMS Routing Microservice</span>
-                      <p class="text-sm text-zinc-500 leading-relaxed">Re-architected a Celery-based asynchronous microservice enabling scalable, high-performance multi-provider SMS delivery.</p>
+                      <span
+                        class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">SMS
+                        Routing Microservice</span>
+                      <p class="text-sm text-zinc-500 leading-relaxed">Re-architected a Celery-based asynchronous
+                        microservice enabling scalable, high-performance multi-provider SMS delivery.</p>
                     </li>
                     <li class="group">
-                      <span class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">Internal Finance System</span>
-                      <p class="text-sm text-zinc-500 leading-relaxed">Designed and implemented the system end-to-end, including financial data models, invoice workflows, and secure integration with Iran's Moadian government tax platform.</p>
+                      <span
+                        class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">Internal
+                        Finance System</span>
+                      <p class="text-sm text-zinc-500 leading-relaxed">Designed and implemented the system end-to-end,
+                        including financial data models, invoice workflows, and secure integration with Iran's Moadian
+                        government tax platform.</p>
                     </li>
                     <li class="group">
-                      <span class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">Personalized NFC Card SaaS</span>
-                      <p class="text-sm text-zinc-500 leading-relaxed">Built a multi-tenant SaaS product allowing customers to manage NFC-linked profiles and publish personalized public pages.</p>
+                      <span
+                        class="text-zinc-200 text-sm font-semibold block group-hover:text-accent transition-colors">Personalized
+                        NFC Card SaaS</span>
+                      <p class="text-sm text-zinc-500 leading-relaxed">Built a multi-tenant SaaS product allowing
+                        customers to manage NFC-linked profiles and publish personalized public pages.</p>
                     </li>
                   </ul>
                 </div>
@@ -243,33 +298,37 @@
 
               <div class="relative pl-8">
                 <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
-                
+
                 <div class="space-y-3">
                   <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1">
                     <h3 class="text-lg font-bold text-zinc-300">Backend Engineering Intern</h3>
                     <span class="text-xs font-mono text-muted">Dec 2024 - March 2025</span>
                   </div>
-                  <p class="text-sm font-medium text-zinc-500">Sinoos Group<span class="text-zinc-700 mx-2">|</span> Internship</p>
-                  
+                  <p class="text-sm font-medium text-zinc-500">Sinoos Group<span class="text-zinc-700 mx-2">|</span>
+                    Internship</p>
+
                   <ul class="space-y-4 pt-2">
                     <li>
                       <span class="text-zinc-400 text-sm font-semibold block">Divar-like Marketplace API</span>
-                      <p class="text-sm text-zinc-500 leading-relaxed">Built a REST API clone using Django REST Framework with asynchronous background processing via Celery and Redis.</p>
+                      <p class="text-sm text-zinc-500 leading-relaxed">Built a REST API clone using Django REST
+                        Framework with asynchronous background processing via Celery and Redis.</p>
                     </li>
                     <li>
                       <span class="text-zinc-400 text-sm font-semibold block">Webinar Ticketing System</span>
-                      <p class="text-sm text-zinc-500 leading-relaxed">Implemented webinar registration and ticket sales with integrated payment gateway provider APIs.</p>
+                      <p class="text-sm text-zinc-500 leading-relaxed">Implemented webinar registration and ticket sales
+                        with integrated payment gateway provider APIs.</p>
                     </li>
                     <li>
                       <span class="text-zinc-400 text-sm font-semibold block">Customer Document Microservice</span>
-                      <p class="text-sm text-zinc-500 leading-relaxed">Maintained and extended the tiktime-customer-document microservice, delivering feature updates and production fixes.</p>
+                      <p class="text-sm text-zinc-500 leading-relaxed">Maintained and extended the
+                        tiktime-customer-document microservice, delivering feature updates and production fixes.</p>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           </section>
-          
+
           <section id="github">
             <h2 class="text-xl font-bold text-white mb-10 border-b border-zinc-800 pb-2 flex justify-between items-end">
               GitHub Activity
@@ -284,23 +343,25 @@
                 Contribution Activity
               </h3>
               <div class="flex justify-center">
-                <img src="https://github-readme-activity-graph.vercel.app/graph?username=x017&bg_color=111111&color=666666&line=38bdf8&point=38bdf8&area=true&area_color=38bdf8&hide_border=true" alt="GitHub Activity Graph" class="w-full rounded" />
+                <img
+                  src="https://github-readme-activity-graph.vercel.app/graph?username=x017&bg_color=111111&color=666666&line=38bdf8&point=38bdf8&area=true&area_color=38bdf8&hide_border=true"
+                  alt="GitHub Activity Graph" class="w-full rounded" />
               </div>
             </div>
 
             <!-- GitHub Repositories -->
-          
-          <section id="education">
-            <h2 class="text-xl font-bold text-white mb-8 border-b border-zinc-800 pb-2">Education</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div class="text-sm font-mono text-muted pt-1">2023 - Present</div>
-              <div class="md:col-span-3">
-                <h3 class="font-semibold text-white">Bachelor's in Computer Science</h3>
-                <p class="text-sm text-zinc-400 mt-1">IAU Ahvaz Branch</p>
-                <p class="text-sm text-zinc-500 mt-2">Software Engineering</p>
+
+            <section id="education">
+              <h2 class="text-xl font-bold text-white mb-8 border-b border-zinc-800 pb-2">Education</h2>
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="text-sm font-mono text-muted pt-1">2023 - Present</div>
+                <div class="md:col-span-3">
+                  <h3 class="font-semibold text-white">Bachelor's in Computer Science</h3>
+                  <p class="text-sm text-zinc-400 mt-1">IAU Ahvaz Branch</p>
+                  <p class="text-sm text-zinc-500 mt-2">Software Engineering</p>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
 
         </div>
       </div>
@@ -316,24 +377,24 @@
           <!--   <p class="text-zinc-400">This is the test tab. Add your content here!</p> -->
           <!-- </div> -->
           <!---->
-          <!--Example content structure --> 
+          <!--Example content structure -->
           <!-- <div class="border border-dashed border-zinc-700 rounded-lg p-8 text-center"> -->
           <!--   <i class="fas fa-plus text-zinc-600 text-2xl mb-3"></i> -->
           <!--   <p class="text-zinc-500 text-sm">Add your content here</p> -->
           <!-- </div> -->
 
-            <div class="mt-8 space-y-4" id="github-repos">
-              <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <i class="fab fa-github text-zinc-600"></i>
-                Selected Repositories
-              </h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="repos-container">
-                <div class="text-center text-zinc-500 py-8 col-span-full">
-                  <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
-                  <p>Loading repositories...</p>
-                </div>
+          <div class="mt-8 space-y-4" id="github-repos">
+            <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+              <i class="fab fa-github text-zinc-600"></i>
+              Selected Repositories
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="repos-container">
+              <div class="text-center text-zinc-500 py-8 col-span-full">
+                <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+                <p>Loading repositories...</p>
               </div>
             </div>
+          </div>
           </section>
         </div>
       </div>
@@ -381,11 +442,11 @@
       try {
         const container = document.getElementById('repos-container');
         container.innerHTML = '';
-        
+
         for (const repoPath of selectedRepos) {
           const response = await fetch(`https://api.github.com/repos/${repoPath}`);
           const repo = await response.json();
-          
+
           const repoCard = `
             <div class="group border border-zinc-800 bg-zinc-900/30 rounded-lg p-4 hover:border-zinc-700 hover:bg-zinc-900/50 transition-all duration-300">
               <div class="flex items-start justify-between mb-2">
@@ -406,9 +467,9 @@
               <p class="text-xs text-zinc-500 leading-relaxed mb-3 line-clamp-2">${repo.description || 'No description available'}</p>
               <div class="flex flex-wrap gap-1.5">
                 ${repo.language ? `<span class="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-500 rounded font-mono">${repo.language}</span>` : ''}
-                ${repo.topics ? repo.topics.slice(0, 2).map(topic => 
-                  `<span class="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-500 rounded font-mono">${topic}</span>`
-                ).join('') : ''}
+                ${repo.topics ? repo.topics.slice(0, 2).map(topic =>
+            `<span class="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-500 rounded font-mono">${topic}</span>`
+          ).join('') : ''}
               </div>
             </div>
           `;
@@ -427,54 +488,55 @@
     fetchGitHubRepos();
   </script>
 </body>
+
 </html>
 
 
 /* Tab Styles */
-    .tab-btn {
-      position: relative;
-      padding: 0.5rem 1rem;
-      color: #888;
-      transition: all 0.2s;
-    }
-    .tab-btn:hover {
-      color: #ccc;
-    }
-    .tab-btn.active {
-      color: #38bdf8;
-    }
-    .tab-btn.active::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: #38bdf8;
-    }
-    
-    /* Tab Content Animation */
-    .tab-contents {
-      position: relative;
-    }
-    .tab-content {
-      display: none;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    .tab-content.active {
-      display: block;
-      animation: fadeInUp 0.4s ease forwards;
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.tab-btn {
+position: relative;
+padding: 0.5rem 1rem;
+color: #888;
+transition: all 0.2s;
+}
+.tab-btn:hover {
+color: #ccc;
+}
+.tab-btn.active {
+color: #38bdf8;
+}
+.tab-btn.active::after {
+content: '';
+position: absolute;
+bottom: -1px;
+left: 0;
+right: 0;
+height: 2px;
+background: #38bdf8;
+}
+
+/* Tab Content Animation */
+.tab-contents {
+position: relative;
+}
+.tab-content {
+display: none;
+opacity: 0;
+transform: translateY(10px);
+transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.tab-content.active {
+display: block;
+animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(10px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
